@@ -36,11 +36,13 @@ public class TestDB {
 			
 			System.out.println(formeUFO);
 			
+			//creo un altra queary 
+			
 			String sql2 = "SELECT COUNT(*) AS cnt FROM sighting WHERE shape= ? ";
 			String shapeScelta="circle";
 			
 			PreparedStatement st2 = conn.prepareStatement(sql2);
-			//dopo lo statement e prima di eseguirlo imposto il parametro ?
+			//dopo lo statement e prima di eseguirlo imposto il parametro o i paramtri fosssero piu di 1 (parametro = ?) 
 			st2.setString(1, shapeScelta);
 			ResultSet res2 =st2.executeQuery();
 			
