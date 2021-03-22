@@ -32,7 +32,24 @@ public class TestDB {
 				formeUFO.add(forma);
 			}
 			
+			st.close();
+			
 			System.out.println(formeUFO);
+			
+			String sql2 = "SELECT COUNT(*) AS cnt FROM sighting WHERE shape= ? ";
+			String shapeScelta="circle";
+			
+			PreparedStatement st2 = conn.prepareStatement(sql2);
+			//dopo lo statement e prima di eseguirlo imposto il parametro ?
+			st2.setString(1, shapeScelta);
+			ResultSet res2 =st2.executeQuery();
+			
+			res2.first();
+			int count =res2.getInt("cnt");
+			
+			System.out.println("Ufo di forma "+ shapeScelta+" sono : "+count);
+			
+			st2.close();
 			
 			conn.close();
 			
